@@ -1,0 +1,99 @@
+{
+  "name": "lloricode/lumen-boilerplate",
+  "description": "The Lumen Boilerplate Project.",
+  "homepage": "https://github.com/lloricode/lumen-boilerplate",
+  "keywords": [
+    "framework",
+    "laravel",
+    "lumen",
+    "boilerplate"
+  ],
+  "support": {
+    "issues": "https://github.com/lloricode/lumen-boilerplate/issues",
+    "source": "https://github.com/lloricode/lumen-boilerplate"
+  },
+  "authors": [
+    {
+      "name": "Lloric Mayuga Garcia",
+      "email": "lloricode@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": "^7.4",
+    "ext-intl": "*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "coderello/laravel-passport-social-grant": "^3.0",
+    "darkaonline/swagger-lume": "^8.0",
+    "dusterio/lumen-passport": "^0.2.18",
+    "flipbox/lumen-generator": "^8.0",
+    "fruitcake/laravel-cors": "^2.0",
+    "graham-campbell/throttle": "^8.0",
+    "laravel/lumen-framework": "^8.0.1",
+    "laravel/passport": "^10.0.1",
+    "laravel/socialite": "^5.0.1",
+    "prettus/l5-repository": "^2.6.45",
+    "rap2hpoutre/laravel-log-viewer": "^1.4.0",
+    "spatie/laravel-fractal": "^5.7",
+    "spatie/laravel-permission": "^3.11.0",
+    "spatie/laravel-sluggable": "^2.5.1"
+  },
+  "require-dev": {
+    "barryvdh/laravel-ide-helper": "^2.8.1",
+    "fzaninotto/faker": "^1.9.1",
+    "gmsantos/inspiring": "^3.0",
+    "league/flysystem": "^1.0.66",
+    "mockery/mockery": "^1.3.1",
+    "phpunit/phpunit": "^9.3.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "clear-all": [
+      "@php artisan clear-compiled --ansi",
+      "@php artisan permission:cache-reset --ansi",
+      "@php artisan cache:clear --ansi",
+      "@php -r \"!file_exists('storage/framework/cache/repository-cache-keys.json') || unlink('storage/framework/cache/repository-cache-keys.json');\"",
+      "composer dump-autoload --no-interaction --ansi --optimize",
+      "@php artisan inspire --ansi"
+    ],
+    "ide-helper": [
+      "@php artisan ide-helper:generate --ansi",
+      "@php artisan ide-helper:meta --ansi",
+      "@php artisan inspire --ansi"
+    ],
+    "ide-helper-model": [
+      "@php artisan ide-helper:generate --ansi",
+      "@php artisan ide-helper:meta --ansi",
+      "@php artisan ide-helper:models --reset --write --ansi",
+      "@php artisan inspire --ansi"
+    ],
+    "phpunit": [
+      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M",
+      "@php artisan inspire --ansi"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
